@@ -190,24 +190,24 @@
                 </div>
             </div>
         </div>
-    </nav>
 
-    <!-- Hiring Banner -->
-    <div id="hiringBanner" class="mt-20 bg-gradient-to-r from-cyan-700 to-cyan-600 border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
-            <div class="flex items-center gap-2 text-cyan-50 text-sm">
-                <i class="fas fa-bullhorn"></i>
-                <span>We're hiring: <strong class="font-semibold text-white">Electronics Soldering Technician</strong></span>
+        <!-- Hiring Banner (inside navbar, always visible under the menu) -->
+        <div id="hiringBanner" class="bg-gradient-to-r from-cyan-700 to-cyan-600 border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center">
+                <div class="flex items-center gap-2 text-cyan-50 text-sm">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>We're hiring: <strong class="font-semibold text-white">Electronics Soldering Technician</strong></span>
+                </div>
+                <a onclick="applyForRole('Electronics Soldering Technician')"
+                    class="cursor-pointer inline-flex items-center gap-2 bg-white text-cyan-900 hover:bg-cyan-50 px-4 py-1 rounded-full text-xs font-semibold transition-colors">
+                    Apply now <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
-            <a onclick="applyForRole('Electronics Soldering Technician')"
-                class="cursor-pointer inline-flex items-center gap-2 bg-white text-cyan-900 hover:bg-cyan-50 px-4 py-1 rounded-full text-xs font-semibold transition-colors">
-                Apply now <i class="fas fa-arrow-right"></i>
-            </a>
         </div>
-    </div>
+    </nav>
     
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-8 overflow-hidden">
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-44 sm:pt-32 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <div class="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
             <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
@@ -723,7 +723,7 @@
                 </div>
 
                 <!-- Right: Application Form -->
-                <div id="apply-form" class="glass-panel p-8 rounded-2xl border border-white/10 scroll-mt-24 self-start">
+                <div id="apply-form" class="glass-panel p-8 rounded-2xl border border-white/10 scroll-mt-40 self-start">
                     <h4 class="text-2xl font-bold text-white mb-2">Apply Now</h4>
                     <p class="text-slate-400 text-sm mb-6">Fill in your details and we'll get back to you soon.</p>
                     
@@ -1127,11 +1127,12 @@
     </div>
 
     <script>
-        // Smooth scroll function
+        // Smooth scroll function (offset = real height of navbar + hiring banner)
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) {
-                const offsetTop = element.offsetTop - 80;
+                const navHeight = document.getElementById('navbar').offsetHeight;
+                const offsetTop = element.offsetTop - navHeight;
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -1346,7 +1347,7 @@
 
             // Update active nav link based on scroll position
             const sections = ['home', 'about', 'services', 'products', 'career', 'contact'];
-            const scrollPos = window.scrollY + 100;
+            const scrollPos = window.scrollY + nav.offsetHeight + 20;
 
             sections.forEach(section => {
                 const element = document.getElementById(section);
